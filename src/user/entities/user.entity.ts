@@ -1,9 +1,12 @@
+import { Message } from 'src/message/entities/message.entity';
 import { Profile } from 'src/profile/entities/profile.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   ManyToMany,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -21,8 +24,8 @@ export class User {
   @Column({ nullable: true })
   role: string;
 
-  @ManyToMany(() => Profile, (profile: Profile) => profile.users)
-  profiles: Profile[];
+  @OneToMany(() => Message, (message: Message) => message.user)
+  messages: Message[];
 
   @CreateDateColumn()
   created_at: Date;

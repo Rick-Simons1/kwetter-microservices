@@ -21,8 +21,4 @@ export class Profile {
 
   @CreateDateColumn()
   created_at: Date;
-
-  @ManyToMany(() => User, (user: User) => user.profiles)
-  @JoinTable()
-  users: User[];
 }
