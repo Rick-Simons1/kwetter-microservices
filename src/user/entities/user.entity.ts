@@ -19,7 +19,13 @@ export class User {
   username: string;
 
   @Column()
-  email: string;
+  hashtag: string;
+
+  @Column()
+  discription: string;
+
+  @Column()
+  authId: string;
 
   @Column({ nullable: true })
   role: string;

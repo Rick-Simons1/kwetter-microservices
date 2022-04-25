@@ -19,7 +19,7 @@ export class UserController {
   }
 
   @MessagePattern('user:find-by-id')
-  findOne(@Payload() id: number) {
+  findOne(@Payload() id: string) {
     return this.userService.findOne(id);
   }
 
