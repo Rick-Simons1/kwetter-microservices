@@ -23,6 +23,11 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
+  @MessagePattern('user:find-by-hashtag')
+  findOneByHashtag(@Payload() hashtag: string) {
+    return this.userService.findOneByHashtag(hashtag);
+  }
+
   @MessagePattern('user:updateUser')
   update(@Payload() updateUserDto: UpdateUserDto) {
     return this.userService.update(updateUserDto.id, updateUserDto);

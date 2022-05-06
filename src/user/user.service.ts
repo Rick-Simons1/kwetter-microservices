@@ -23,6 +23,13 @@ export class UserService {
     return this.userRepository.findOne({ authId: id });
   }
 
+  findOneByHashtag(hashTag: string) {
+    return this.userRepository.findOne({
+      select: ['username', 'hashtag', 'discription'],
+      where: { hashtag: hashTag },
+    });
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return this.userRepository.update(id, updateUserDto);
   }
