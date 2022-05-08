@@ -23,6 +23,11 @@ export class MessageController {
     return this.messageService.findOne(id);
   }
 
+  @MessagePattern('message:find-all-messages-by-userId')
+  findAllMessagesByUserId(@Payload() userId: string) {
+    return this.messageService.findAllMessagesByUserId(userId);
+  }
+
   @MessagePattern('message:update-message')
   update(@Payload() updateMessageDto: UpdateMessageDto) {
     return this.messageService.update(updateMessageDto.id, updateMessageDto);

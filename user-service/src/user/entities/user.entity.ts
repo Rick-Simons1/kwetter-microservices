@@ -1,4 +1,3 @@
-import { Message } from 'src/message/entities/message.entity';
 import {
   Column,
   CreateDateColumn,
@@ -34,9 +33,6 @@ export class User {
 
   @Column('simple-array')
   followers: string[];
-
-  @OneToMany(() => Message, (message: Message) => message.user)
-  messages: Message[];
 
   @CreateDateColumn()
   created_at: Date;

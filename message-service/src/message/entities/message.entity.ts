@@ -1,4 +1,3 @@
-import { User } from 'src/user/entities/user.entity';
 import {
   Column,
   Entity,
@@ -13,9 +12,6 @@ export class Message {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, (user: User) => user.messages)
-  user: User;
-
   @Column()
   messageContent: string;
 
@@ -24,4 +20,7 @@ export class Message {
 
   @Column({ nullable: true })
   retweets: number;
+
+  @Column()
+  userId: string;
 }

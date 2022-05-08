@@ -3,8 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import { User } from './user/entities/user.entity';
-import { UserModule } from './user/user.module';
 import { MessageModule } from './message/message.module';
 import { Message } from './message/entities/message.entity';
 
@@ -13,14 +11,13 @@ import { Message } from './message/entities/message.entity';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      port: 3306,
+      port: 3307,
       username: 'root',
       password: 'root',
-      database: 'Kwetter-Microservices',
-      entities: [User, Message],
+      database: 'Kwetter-MessageService',
+      entities: [Message],
       synchronize: true,
     }),
-    UserModule,
     MessageModule,
   ],
   controllers: [AppController],
