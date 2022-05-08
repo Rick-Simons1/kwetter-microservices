@@ -24,8 +24,8 @@ export class MessageService {
     return this.messageRepository.findOne(id);
   }
 
-  findAllMessagesByUserId(userId: string) {
-    return this.messageRepository.find({ userId: userId });
+  findAllMessagesByUserId(id: string) {
+    return this.messageRepository.find({ userId: id });
   }
 
   update(id: number, updateMessageDto: UpdateMessageDto) {

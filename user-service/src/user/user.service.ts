@@ -20,7 +20,7 @@ export class UserService {
   }
 
   async findAllFollowingById(id: string) {
-    const user: User = await this.findOne(id);
+    const user: User = await this.userRepository.findOne({ authId: id });
     let followingList: User[] = [];
 
     for (let index = 0; index < user.following.length; index++) {
@@ -34,7 +34,7 @@ export class UserService {
   }
 
   async findAllFollowersById(id: string) {
-    const user: User = await this.findOne(id);
+    const user: User = await this.userRepository.findOne({ authId: id });
     let followerList: User[] = [];
 
     for (let index = 0; index < user.followers.length; index++) {
@@ -48,7 +48,20 @@ export class UserService {
   }
 
   findOne(id: string) {
-    return this.userRepository.findOne({ authId: id });
+    return this.userRepository.findOne({
+      select: [
+        'id',
+        'authId',
+        'created_at',
+        'hashtag',
+        'username',
+        'role',
+        'discription',
+        'followers',
+        'following',
+      ],
+      where: { authId: id },
+    });
   }
 
   findOneByHashtag(hashTag: string) {
