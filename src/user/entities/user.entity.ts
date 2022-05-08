@@ -23,11 +23,17 @@ export class User {
   @Column()
   discription: string;
 
-  @Column()
+  @Column({ unique: true })
   authId: string;
 
   @Column({ nullable: true })
   role: string;
+
+  @Column('simple-array')
+  following: string[];
+
+  @Column('simple-array')
+  followers: string[];
 
   @OneToMany(() => Message, (message: Message) => message.user)
   messages: Message[];
