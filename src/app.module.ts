@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Profile } from './profile/entities/profile.entity';
-import { ProfileModule } from './profile/profile.module';
+
 import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
+import { MessageModule } from './message/message.module';
+import { Message } from './message/entities/message.entity';
 
 @Module({
   imports: [
@@ -16,11 +17,11 @@ import { UserModule } from './user/user.module';
       username: 'root',
       password: 'root',
       database: 'Kwetter-Microservices',
-      entities: [User, Profile],
+      entities: [User, Message],
       synchronize: true,
     }),
     UserModule,
-    ProfileModule,
+    MessageModule,
   ],
   controllers: [AppController],
   providers: [AppService],

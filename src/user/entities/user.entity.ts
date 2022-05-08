@@ -1,9 +1,11 @@
-import { Profile } from 'src/profile/entities/profile.entity';
+import { Message } from 'src/message/entities/message.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   ManyToMany,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -16,13 +18,25 @@ export class User {
   username: string;
 
   @Column()
-  email: string;
+  hashtag: string;
+
+  @Column()
+  discription: string;
+
+  @Column({ unique: true })
+  authId: string;
 
   @Column({ nullable: true })
   role: string;
 
-  @ManyToMany(() => Profile, (profile: Profile) => profile.users)
-  profiles: Profile[];
+  @Column('simple-array')
+  following: string[];
+
+  @Column('simple-array')
+  followers: string[];
+
+  @OneToMany(() => Message, (message: Message) => message.user)
+  messages: Message[];
 
   @CreateDateColumn()
   created_at: Date;

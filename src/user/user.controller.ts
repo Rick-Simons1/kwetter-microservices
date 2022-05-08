@@ -18,9 +18,24 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @MessagePattern('user:find-all-following-by-id')
+  findAllfollowingById(id: string) {
+    return this.userService.findAllFollowingById(id);
+  }
+
+  @MessagePattern('user:find-all-followers-by-id')
+  findAllfollowersById(id: string) {
+    return this.userService.findAllFollowersById(id);
+  }
+
   @MessagePattern('user:find-by-id')
-  findOne(@Payload() id: number) {
+  findOne(@Payload() id: string) {
     return this.userService.findOne(id);
+  }
+
+  @MessagePattern('user:find-by-hashtag')
+  findOneByHashtag(@Payload() hashtag: string) {
+    return this.userService.findOneByHashtag(hashtag);
   }
 
   @MessagePattern('user:updateUser')

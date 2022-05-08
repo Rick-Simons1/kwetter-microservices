@@ -19,8 +19,40 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  findOne(id: number) {
-    return this.userRepository.findOne(id);
+  async findAllFollowingById(id: string) {
+    const user: User = await this.findOne(id);
+    let followingList: User[] = [];
+
+    for (let index = 0; index < user.following.length; index++) {
+      const kwetterUser = await this.userRepository.findOne({
+        authId: user.following[index],
+      });
+      followingList.push(kwetterUser);
+    }
+
+    return followingList;
+  }
+
+  async findAllFollowersById(id: string) {
+    const user: User = await this.findOne(id);
+    let followerList: User[] = [];
+
+    for (let index = 0; index < user.followers.length; index++) {
+      const kwetterUser = await this.userRepository.findOne({
+        authId: user.followers[index],
+      });
+      followerList.push(kwetterUser);
+    }
+
+    return followerList;
+  }
+
+  findOne(id: string) {
+    return this.userRepository.findOne({ authId: id });
+  }
+
+  findOneByHashtag(hashTag: string) {
+    return this.userRepository.findOne({ hashtag: hashTag });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
