@@ -5,8 +5,8 @@ name: Node.js CI
 
 on:
   push:
-#     paths:
-#       - 'user-service/**'
+    paths:
+      - 'user-service/**'
     branches: [ Develop ]
   pull_request:
     branches: [ Develop ]
