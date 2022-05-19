@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  ports:
+    - port: 3307
+  selector:
+    app: mysql-user
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-user
+spec:
+  selector:
+    matchLabels:
+      app: mysql-user
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-user
+    spec:
+      containers:
+        - image: mysql:5.6
+          name: mysql-user
+          env:
+            # Use secret in real usage
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+          ports:
+            - containerPort: 3307
+              name: mysql-user
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim

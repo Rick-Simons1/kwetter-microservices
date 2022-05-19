@@ -10,8 +10,8 @@ import { Message } from './message/entities/message.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3307,
+      host: 'mysql',
+      port: 3306,
       username: 'root',
       password: 'root',
       database: 'Kwetter-MessageService',
