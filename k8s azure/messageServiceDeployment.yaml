@@ -18,9 +18,9 @@ spec:
         - name: messageservice
           image: kwetters6.azurecr.io/messageservice:v0.1.3
           resources:
-          limits:
-            memory: 500Mi
-            cpi: 500m
+            limits:
+              memory: 500Mi
+              cpu: 500m
           ports:
             - containerPort: 5002
 ---

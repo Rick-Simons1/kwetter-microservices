@@ -18,9 +18,9 @@ spec:
         - name: userservice
           image: kwetters6.azurecr.io/userservice:v0.2.4
           resources:
-          limits:
-            memory: 500Mi
-            cpi: 500m
+            limits:
+              memory: 500Mi
+              cpu: 500m
           ports:
             - containerPort: 5001
 ---
