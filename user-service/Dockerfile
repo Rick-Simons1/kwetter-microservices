@@ -1,8 +1,8 @@
 FROM node:16-alpine as base
 
-WORKDIR /user-service
+WORKDIR /usr/src/app
 
-COPY package*.json .
+COPY package*.json ./
 
 RUN npm install --only=development
 
