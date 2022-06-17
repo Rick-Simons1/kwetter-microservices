@@ -94,7 +94,7 @@ jobs:
     - uses: azure/k8s-deploy@v1
       with:
         manifests: |
-          ${{ github.workspace }}/k8s azure/messageServiceWorkflow.yaml
+          ${{ github.workspace }}/k8s azure/messageServiceDeployment.yaml
         images: |
           ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
         imagepullsecrets: |
