@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: userservice
-          image: kwetters6.azurecr.io/userservice:v0.2.4
+          image: kwetters6.azurecr.io/userservice:v0.2.5
           resources:
             limits:
               memory: 500Mi

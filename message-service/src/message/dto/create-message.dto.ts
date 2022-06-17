@@ -1,5 +1,6 @@
 export class CreateMessageDto {
   messagecontent: string;
-  likes: number;
-  retweets: number;
+  userId: string;
+  userName: string;
+  userHashtag: string;
 }

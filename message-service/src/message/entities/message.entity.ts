@@ -23,4 +23,10 @@ export class Message {
 
   @Column()
   userId: string;
+
+  @Column()
+  userName: string;
+
+  @Column()
+  userHashtag: string;
 }
