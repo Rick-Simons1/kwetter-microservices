@@ -14,7 +14,7 @@ export class UserController {
   }
 
   @MessagePattern('user:find-all')
-  findAll(@Ctx() context: RmqContext) {
+  findAll() {
     return this.userService.findAll();
   }
 
