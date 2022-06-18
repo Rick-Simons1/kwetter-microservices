@@ -13,13 +13,13 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({nullable : false})
   username: string;
 
-  @Column()
+  @Column({nullable : false})
   hashtag: string;
 
-  @Column()
+  @Column({nullable : false})
   discription: string;
 
   @Column({ unique: true })

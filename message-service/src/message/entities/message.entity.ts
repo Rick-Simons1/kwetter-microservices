@@ -12,7 +12,7 @@ export class Message {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({nullable : false})
   messageContent: string;
 
   @Column({ nullable: true })
@@ -21,12 +21,12 @@ export class Message {
   @Column({ nullable: true })
   retweets: number;
 
-  @Column()
+  @Column({nullable : false})
   userId: string;
 
-  @Column()
+  @Column({nullable : false})
   userName: string;
 
-  @Column()
+  @Column({nullable : false})
   userHashtag: string;
 }
