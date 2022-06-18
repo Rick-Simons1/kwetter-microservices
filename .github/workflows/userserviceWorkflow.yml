@@ -42,7 +42,7 @@ jobs:
         cache-dependency-path: 'user-service/package-lock.json'
     - run: npm ci
     - run: npm run build --if-present
-#     - run: npm test
+    - run: npm run test
   sonarcloud:
     runs-on: ubuntu-latest
     steps:
